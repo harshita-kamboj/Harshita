@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Papa!</title>
+     <style>
+        * { 
+            box-sizing: border-box; 
+            scrollbar-width: thin;
+            scrollbar-color: #ffd700 #222;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ffd700;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffcc00;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            background: #ff4d4d;
+            filter: blur(160px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        #reveal-btn {
+            background: #ffd700;
+            color: #000;
+            border: none;
+            padding: 18px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            transition: 0.3s;
+        }
+
+        #content {
+            display: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        }
+
+        h1 { 
+            font-size: 3rem; 
+            margin-bottom: 15px; 
+            color: #ffd700;
+            line-height: 1.2;
+        }
+
+        .photo-strip {
+            display: flex;
+            gap: 12px;
+            margin: 25px 0;
+            overflow-x: auto;
+            padding-bottom: 15px;
+        }
+
+        .photo-strip img {
+            width: 180px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            flex-shrink: 0;
+        }
+
+        .message { 
+            font-size: 1.05rem; 
+            line-height: 1.7; 
+            color: #f0f0f0; 
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            color: #ffd700;
+            font-weight: 600;
+            font-style: italic;
+        }
+        #opener h2{
+            font-size: 2rem;
+            
+        }
+        h2{
+            margin-bottom: 25px;
+            font-size: 30px;
+        }
+        #love{
+            margin-top: 25px; font-size: 0.9rem; color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bday-music" loop>
+        <source src="Ek-Cheez-Mangi-Ohne-2-Si-Davay-Downringtone.com.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <div id="opener">
+            <h2>Papa ji, aapke liye ek chota sa surprise...</h2>
+            <button id="reveal-btn" onclick="showSurprise()">Click karke dekho! ❤️</button>
+        </div>
+
+        <div id="content">
+            <div class="main-card">
+                <h1>Happy Birthday to the World's Best Papa ji! 🎂</h1>
+                
+                <p class="message">
+                    Aap sirf mere papa nahi, mere sabse bade support system aur super-hero ho. 
+                    Aapne humesha hamari khushiyon ko apni khushiyon se upar rakha hai. 
+                    Thank you so much humare liye itna kuch karne ke liye aur humesha guide karne ke liye. 
+                    Aap jaisa koi nahi hai! ❤️
+                </p>
+                
+                <div class="photo-strip">
+                    <img src="papa1.jpg" alt="Memory 1">
+                    <img src="papa2.jpeg" alt="Memory 2">
+                    <img src="papa3.jpeg" alt="Memory 3">
+                </div>
+
+                <p class="tagline">"Aap ho toh sab kuch sahi hai."</p>
+                <div id="love">Lots of love, Harshita</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        function showSurprise() {
+            var music = document.getElementById('bday-music');
+            music.play().catch(function(error) {
+                console.log("Music play failed:", error);
+            });
+
+            document.getElementById('opener').style.display = 'none';
+            const content = document.getElementById('content');
+            content.style.display = 'block';
+            
+            setTimeout(() => {
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 100);
+
+            var end = Date.now() + (2 * 1000);
+            var colors = ['#ffd700', '#ffffff', '#ff4d4d'];
+
+            (function frame() {
+              confetti({
+                particleCount: 3,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                colors: colors
+              });
+              confetti({
+                particleCount: 3,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                colors: colors
+              });
+
+              if (Date.now() < end) {
+                requestAnimationFrame(frame);
+              }
+            }());
+        }
+    </script>
+</body>
+</html>
